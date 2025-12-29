@@ -1,0 +1,14 @@
+services:
+  glucoviewserver:
+    image: ruin141/glucoviewserver:master
+    container_name: glucoviewserver
+    environment:
+      - USER_ID=${USER_ID}
+      - API_TOKEN=${API_TOKEN}
+      - FIREBASE_SERVICE_ACCOUNT_JSON_PATH=/run/secrets/serviceAccountKey.json
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ../src/main/resources/serviceAccountKey.json:/run/secrets/serviceAccountKey.json:ro
